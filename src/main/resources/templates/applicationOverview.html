@@ -29,108 +29,115 @@
 <main th:fragment="bodycontent">
     <!-- Restlichen Inhalt hier einfügen! -->
     <div style="text-align: center">
-        <div class="card bg-light mb-3 border-primary">
-            <div class="card-body">
-                <label><h2>Ihre Bewerbungen</h2></label>
-                <a th:href="@{./}" class="btn btn-outline-primary" style="float: right;"> Dashboard </a>
+        <form th:object="${applicant}">
+            <div class="card bg-light mb-3 border-primary">
+                <div class="card-body">
+                    <label><h2>Ihre Bewerbungen</h2></label>
+                    <a th:href="@{./}" class="btn btn-outline-primary" style="float: right;"> Dashboard </a>
+                </div>
             </div>
-        </div>
-        <div class="card bg-light mb-3 border-primary">
-            <div class="card-header">
-                <label><h3>Persönliche Daten</h3></label>
-                <a th:href="@{bearbeitePersoenlicheDaten}" class="btn btn-outline-primary" style="float: right;"> Bearbeiten </a>
-            </div>
-            <div class="card-body">
-                <div class="col-auto">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="row">
-                                <label for="name">Name:&nbsp;</label>
-                                <label id="name">Max Mustermann</label>
+            <div class="card bg-light mb-3 border-primary">
+                <div class="card-header">
+                    <label><h3>Persönliche Daten</h3></label>
+                    <a th:href="@{bearbeitePersoenlicheDaten}" class="btn btn-outline-primary" style="float: right;"> Bearbeiten </a>
+                </div>
+                <div class="card-body">
+                    <div class="col-auto">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <label for="name">Name:&nbsp;</label>
+                                    <label id="name" th:text="*{name}">Max Mustermann</label>
+                                </div>
+                                <div class="row">
+                                    <label for="email">E-Mail:&nbsp;</label>
+                                    <label id="email" th:text="*{email}">maxmustermann@mustermail.de</label>
+                                </div>
+                                <div class="row">
+                                    <label for="streetplusnumber">Straße und Hausnummer:&nbsp;</label>
+                                    <label id="streetplusnumber" th:text="*{address.street}">Musterstraße 1</label>
+                                </div>
+                                <div class="row">
+                                    <label for="place">Ort:&nbsp;</label>
+                                    <label id="place" th:text="*{address.city}">Musterhausen</label>
+                                </div>
+                                <div class="row">
+                                    <label for="plz">Postleitzahl:&nbsp;</label>
+                                    <label id="plz" th:text="*{zipcode}">12345</label>
+                                </div>
                             </div>
-                            <div class="row">
-                                <label for="email">E-Mail:&nbsp;</label>
-                                <label id="email">maxmustermann@mustermail.de</label>
-                            </div>
-                            <div class="row">
-                                <label for="streetplusnumber">Straße und Hausnummer:&nbsp;</label>
-                                <label id="streetplusnumber">Musterstraße 1</label>
-                            </div>
-                            <div class="row">
-                                <label for="place">Ort:&nbsp;</label>
-                                <label id="place">Musterhausen</label>
-                            </div>
-                            <div class="row">
-                                <label for="plz">Postleitzahl:&nbsp;</label>
-                                <label id="plz">12345</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="row">
-                                <label for="subject">Studienfach:&nbsp;</label>
-                                <label id="subject">Informatik</label>
-                            </div>
-                            <div class="row">
-                                <label for="status">Angestelltenstatus:&nbsp;</label>
-                                <label id="status">Neueinstellung</label>
-                            </div>
-                            <div class="row">
-                                <label for="graduation">Bereits erreichter Universitätsabschluss:&nbsp;</label>
-                                <label id="graduation">Bachelor</label>
-                            </div>
-                            <div class="row">
-                                <label for="graduationsubject">Berreits Abgeschlossenes Fach:&nbsp;</label>
-                                <label id="graduationsubject">BWL</label>
-                            </div>
-                            <div class="row">
-                                <label for="information">Ihre sonstigen Angaben:&nbsp;</label>
-                            </div>
-                            <div class="row">
-                                <label id="information">Nehmt mich, denn ich bin sehr gut ...</label>
+                            <div class="col-6">
+                                <div class="row">
+                                    <label for="subject">Studienfach:&nbsp;</label>
+                                    <label id="subject" th:text="*{course}">Informatik</label>
+                                </div>
+                                <div class="row">
+                                    <label for="status">Angestelltenstatus:&nbsp;</label>
+                                    <label id="status" th:text="*{status}">Neueinstellung</label>
+                                </div>
+                                <div class="row">
+                                    <label for="graduation">Bereits erreichter Universitätsabschluss:&nbsp;</label>
+                                    <label id="graduation" th:text="*{certs.name}">Bachelor</label>
+                                </div>
+                                <div class="row">
+                                    <label for="graduationsubject">Berreits Abgeschlossenes Fach:&nbsp;</label>
+                                    <label id="graduationsubject" th:text="*{certs.university}">BWL</label>
+                                </div>
+                                <div class="row">
+                                    <label for="information">Ihre sonstigen Angaben:&nbsp;</label>
+                                </div>
+                                <div class="row">
+                                    <label id="information">Nehmt mich, denn ich bin sehr gut ...</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card bg-light mb-3 border-primary">
-                    <div class="card-header">
-                        <label><h3>[Modulname]</h3></label>
-                        <a th:href="@{bearbeiteModulDaten}" class="btn btn-outline-primary" style="float: right;"> Bearbeiten </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="col-auto">
-                            <div class="row">
-                                <label for="worktime">Arbeitszeit:&nbsp;</label>
-                                <label id="worktime">24/7</label>
-                            </div>
-                            <div class="row">
-                                <label for="grade">Note:&nbsp;</label>
-                                <label id="grade">1,0</label>
-                            </div>
-                            <div class="row">
-                                <label for="semester">Semester:&nbsp;</label>
-                                <label id="semester">SoSe20</label>
-                            </div>
-                            <div class="row">
-                                <label for="lecturer">Dozent:&nbsp;</label>
-                                <label id="lecturer">Musterprof</label>
-                            </div>
-                            <div class="row">
-                                <label for="task">Aufgabe:&nbsp;</label>
-                                <label id="task">Korrektor</label>
-                            </div>
-                            <div class="row">
-                                <label for="priority">Priorität:&nbsp;</label>
-                                <label id="priority">++</label>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card bg-light mb-3 border-primary" th:each="application: *{applications}">
+                        <div class="card-header">
+                            <label th:text="${application.module}"><h3>[Modulname]</h3></label>
+                            <a th:href="@{bearbeiteModulDaten}" class="btn btn-outline-primary" style="float: right;"> Bearbeiten </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-auto">
+                                <div class="row">
+                                    <label for="worktime">Arbeitszeit:&nbsp;</label>
+                                    <label id="worktime" th:text="${application.hours}">24/7</label>
+                                </div>
+                                <div class="row">
+                                    <label for="grade">Note:&nbsp;</label>
+                                    <label id="grade" th:text="${application.grade}">1,0</label>
+                                </div>
+                                <div class="row">
+                                    <label for="semester">Semester:&nbsp;</label>
+                                    <label id="semester" th:text="${application.semester}">SoSe20</label>
+                                </div>
+                                <div class="row">
+                                    <label for="lecturer">Dozent:&nbsp;</label>
+                                    <label id="lecturer" th:text="${application.lecturer}">Musterprof</label>
+                                </div>
+                                <div class="row">
+                                    <label for="task">Aufgabe:&nbsp;</label>
+                                    <label id="task" th:text="${application.role}">Korrektor</label>
+                                </div>
+                                <div class="row">
+                                    <label for="priority">Priorität:&nbsp;</label>
+                                    <label id="priority"
+                                           th:if="${application.role} == 1" th:text="++"
+                                           th:if="${application.role} == 2" th:text="+"
+                                           th:if="${application.role} == 3" th:text="o">
+                                        ++
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </main>
 </body>
