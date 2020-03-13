@@ -50,7 +50,7 @@ public class ApplicationController {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
         }
-        return "applicantMain";
+        return "applicant/applicantMain";
     }
 
     /**
@@ -70,7 +70,7 @@ public class ApplicationController {
             model.addAttribute("courses", CSVService.getCourses());
             model.addAttribute("modules", CSVService.getModules());
         }
-        return "applicationPersonal";
+        return "applicant/applicationPersonal";
     }
 
     /**
@@ -86,7 +86,7 @@ public class ApplicationController {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
         }
-        return "openAppl";
+        return "applicant/openAppl";
     }
 
     /**
@@ -102,7 +102,7 @@ public class ApplicationController {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
         }
-        return "personal";
+        return "applicant/personal";
     }
 
 
@@ -119,6 +119,7 @@ public class ApplicationController {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
         }
+<<<<<<< HEAD
         return "applicationModule";
     }*/
 
@@ -169,22 +170,23 @@ public class ApplicationController {
                     address, birthday, nationality, course, null, null, applications);
             model.addAttribute("applicant", applicant);
         }
-        return "applicationModule";
+
+        return "applicant/applicationModule";
     }
 
     /**
      *
-     * @param applicant
-     * @param token
-     * @param model
-     * @param module
-     * @param workload
-     * @param grade
-     * @param semester
-     * @param lecturer
-     * @param tasks
-     * @param priority
-     * @return
+     * @param applicant Applicant
+     * @param token token
+     * @param model model
+     * @param module module
+     * @param workload workload
+     * @param grade grade
+     * @param semester semester
+     * @param lecturer lecturer
+     * @param tasks tasks
+     * @param priority priority
+     * @return applicationOverview.html as String
      */
     @PostMapping("/uebersicht")
     public String postOverview(final KeycloakAuthenticationToken token,
@@ -228,7 +230,7 @@ public class ApplicationController {
             ApplicantService applicantService = new ApplicantService();
             model.addAttribute("applicant", applicantService.findByUsername(token.getName()));
         }
-        return "applicationOverview";
+        return "applicant/applicationOverview";
     }
 
     /**
@@ -244,7 +246,7 @@ public class ApplicationController {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
         }
-        return "applicationEditPersonal";
+        return "applicant/applicationEditPersonal";
     }
 
     /**
@@ -260,6 +262,6 @@ public class ApplicationController {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
         }
-        return "applicationEditPersonal";
+        return "applicant/applicationEditPersonal";
     }
 }
