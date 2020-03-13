@@ -25,7 +25,6 @@
         </ul>
     </nav>
 </header>
-</header>
 <main th:fragment="bodycontent">
     <!-- Restlichen Inhalt hier einfügen! -->
     <div style="text-align: center">
@@ -95,42 +94,44 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="card bg-light mb-3 border-primary" th:each="application: *{applications}">
-                        <div class="card-header">
-                            <label th:text="${application.module}"><h3>[Modulname]</h3></label>
-                            <a th:href="@{bearbeiteModulDaten}" class="btn btn-outline-primary" style="float: right;"> Bearbeiten </a>
-                        </div>
-                        <div class="card-body">
-                            <div class="col-auto">
-                                <div class="row">
-                                    <label for="worktime">Arbeitszeit:&nbsp;</label>
-                                    <label id="worktime" th:text="${application.hours}">24/7</label>
-                                </div>
-                                <div class="row">
-                                    <label for="grade">Note:&nbsp;</label>
-                                    <label id="grade" th:text="${application.grade}">1,0</label>
-                                </div>
-                                <div class="row">
-                                    <label for="semester">Semester:&nbsp;</label>
-                                    <label id="semester" th:text="${application.semester}">SoSe20</label>
-                                </div>
-                                <div class="row">
-                                    <label for="lecturer">Dozent:&nbsp;</label>
-                                    <label id="lecturer" th:text="${application.lecturer}">Musterprof</label>
-                                </div>
-                                <div class="row">
-                                    <label for="task">Aufgabe:&nbsp;</label>
-                                    <label id="task" th:text="${application.role}">Korrektor</label>
-                                </div>
-                                <div class="row">
-                                    <label for="priority">Priorität:&nbsp;</label>
-                                    <label id="priority"
-                                           th:if="${application.role} == 1" th:text="++"
-                                           th:if="${application.role} == 2" th:text="+"
-                                           th:if="${application.role} == 3" th:text="o">
-                                        ++
-                                    </label>
+                <div th:each="application: *{applications}">
+                    <div class="col-sm-4">
+                        <div class="card bg-light mb-3 border-primary">
+                            <div class="card-header">
+                                <label th:text="${application.module}"><h3>[Modulname]</h3></label>
+                                <a th:href="@{bearbeiteModulDaten}" class="btn btn-outline-primary" style="float: right;"> Bearbeiten </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-auto">
+                                    <div class="row">
+                                        <label for="worktime">Arbeitszeit:&nbsp;</label>
+                                        <label id="worktime" th:text="${application.hours}">24/7</label>
+                                    </div>
+                                    <div class="row">
+                                        <label for="grade">Note:&nbsp;</label>
+                                        <label id="grade" th:text="${application.grade}">1,0</label>
+                                    </div>
+                                    <div class="row">
+                                        <label for="semester">Semester:&nbsp;</label>
+                                        <label id="semester" th:text="${application.semester}">SoSe20</label>
+                                    </div>
+                                    <div class="row">
+                                        <label for="lecturer">Dozent:&nbsp;</label>
+                                        <label id="lecturer" th:text="${application.lecturer}">Musterprof</label>
+                                    </div>
+                                    <div class="row">
+                                        <label for="task">Aufgabe:&nbsp;</label>
+                                        <label id="task" th:text="${application.role}">Korrektor</label>
+                                    </div>
+                                    <div class="row">
+                                        <label for="priority">Priorität:&nbsp;</label>
+                                        <label id="priority"
+                                               th:if="${application.role} == 1" th:text="++"
+                                               th:if="${application.role} == 2" th:text="+"
+                                               th:if="${application.role} == 3" th:text="o">
+                                            ++
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
