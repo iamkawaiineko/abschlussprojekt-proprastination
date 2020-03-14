@@ -13,7 +13,7 @@ create unique index applicant_username_uindex
     on applicant (username);
 create table priorization
 (
-    id int not null
+    id serial
         constraint priorization_pk
             primary key,
     application json,

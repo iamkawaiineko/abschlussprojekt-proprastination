@@ -20,7 +20,7 @@ public class OrgaServiceTest {
     @BeforeAll
     void setUp() {
         application = Application.builder()
-                .applicantusername("boi444")
+                .applicantusername("boi443")
                 .priority(3)
                 .module("Baumeister GmbH")
                 .hours(17)
@@ -33,6 +33,7 @@ public class OrgaServiceTest {
     }
 
     @Test
-    void testSave21() {
+    void testSave() {
+        service.save(application, 1);
     }
 }
