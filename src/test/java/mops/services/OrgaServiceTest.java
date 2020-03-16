@@ -8,7 +8,6 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
@@ -20,15 +19,15 @@ public class OrgaServiceTest {
     @BeforeAll
     void setUp() {
         application = Application.builder()
-                .applicantusername("boi443")
-                .priority(3)
-                .module("Baumeister GmbH")
-                .hours(17)
-                .comment("Bob der Baumeisterlehrling")
-                .grade(1.3)
-                .lecturer("Rollo und der Tubby")
+                .applicantusername("applicantusername")
+                .priority(99)
+                .module("module")
+                .hours(99)
+                .comment("comment")
+                .grade(99.99)
+                .lecturer("lecturer")
                 .role(Role.KORREKTOR)
-                .semester("SS2020")
+                .semester("semester")
                 .build();
     }
 
@@ -36,4 +35,9 @@ public class OrgaServiceTest {
     void testSave() {
         service.save(application, 1);
     }
+
+    @Test
+    void testGetModuleApplications() {
+    }
+
 }

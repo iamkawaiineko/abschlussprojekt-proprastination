@@ -8,6 +8,8 @@ import mops.model.classes.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,6 +48,23 @@ public class OrgaService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    /**
+     * Gets all applications of a module
+     * @param module Name of the module
+     * @return List<Application> List of all applications for a module
+     */
+    public List<Application> getModuleApplications(final String module) {
+        ObjectMapper mapper = new ObjectMapper();
+        List<Application> result = new ArrayList<>();
+        for (String s : repo.findAllApplicationsByModuleName(module)) {
+            try {
+                result.add(mapper.readValue(s, Application.class));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
     private String objectToJsonString(final Object object) {
         ObjectMapper mapper = new ObjectMapper();
