@@ -49,6 +49,19 @@ public class OrgaService {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Saves all evaluations by organizer
+     * @param applications List of applications.
+     * @param priorities List of priorities.
+     */
+    public void saveAll(final List<Application> applications, final List<Integer> priorities) {
+        for (int i = 0; i < applications.size(); i++) {
+            save(applications.get(i), priorities.get(i));
+        }
+    }
+
+
     /**
      * Gets all applications of a module
      * @param module Name of the module

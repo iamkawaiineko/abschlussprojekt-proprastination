@@ -37,6 +37,10 @@ public class OrgaServiceTest {
     }
 
     @Test
+    void testSaveAll() {
+    }
+
+    @Test
     void testGetModuleApplications() {
     }
 
