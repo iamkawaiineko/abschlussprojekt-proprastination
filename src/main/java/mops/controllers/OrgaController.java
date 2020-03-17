@@ -2,6 +2,8 @@ package mops.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import mops.model.Account;
+import mops.model.classes.Applicant;
+import mops.model.classes.Application;
 import mops.services.ApplicantService;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
@@ -48,6 +50,7 @@ public class OrgaController {
     public String index(final KeycloakAuthenticationToken token, final Model model) throws JsonProcessingException {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
+            model.addAttribute("application", new Application());
         }
         return "organizer/orgaMain";
     }
@@ -56,18 +59,14 @@ public class OrgaController {
      * PostMapping to save changes
      * @param token
      * @param model
-     * @param priority
-     * @param hours
-     * @param comment
+     * @param applicant
      * @return orgaMain.html rendered as a String
      * @throws JsonProcessingException
      */
     @PostMapping("/")
     //@Secured("ROLE orga")
     public String save(final KeycloakAuthenticationToken token, final Model model,
-                       @RequestParam("priority") final String priority,
-                       @RequestParam("hours") final String hours,
-                       @RequestParam("comment") final String comment) throws JsonProcessingException {
+                       @ModelAttribute Applicant applicant) {
         if (token != null) {
             model.addAttribute("account", createAccountFromPrincipal(token));
         }
