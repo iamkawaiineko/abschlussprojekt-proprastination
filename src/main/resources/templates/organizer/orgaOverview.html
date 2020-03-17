@@ -48,7 +48,7 @@
 </header>
 
 <main th:fragment="bodycontent">
-    <form th:action="@{./}" th:method="POST">
+    <form th:action="@{./}" th:object="${application}" th:method="POST">
         <table id="table_id" class="display" style="width:100%">
             <thead>
             <tr>
@@ -72,11 +72,11 @@
                         <option value="4">-</option>
                     </select>
                 </td>
-                <td class="text-center">Mamus100</td>
-                <td class="text-center">2,7</td>
-                <td class="text-center">Tutor</td>
+                <td class="text-center" th:field="*{applicantusername}">Mamus100</td>
+                <td class="text-center" th:field="*{grade}">2,7</td>
+                <td class="text-center" th:field="*{role}">Tutor</td>
                 <td class="text-center">
-                    <select name="hours" id="hours">
+                    <select name="hours" id="hours" th:field="*{hours}">
                         <option value="7">7 Stunden</option>
                         <option value="9">9 Stunden</option>
                         <option value="17">17 Stunden</option>
@@ -121,7 +121,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <textarea autofocus type="text" name="comment" id="comment" class="form-control" rows="5" placeholder="Anmerkung"></textarea>
+                        <textarea th:field="*{comment}" autofocus type="text" name="comment" id="comment" class="form-control" rows="5" placeholder="Anmerkung"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
